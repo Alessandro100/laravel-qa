@@ -22,8 +22,8 @@ class CreateQuestionsTable extends Migration
             $table->unsignedInteger('views')->default(0);//werid
             $table->unsignedInteger('answers')->default(0);
             $table->integer('votes')->default(0);
-            $table->unsignedInteger('best_answer_id')->nullable();//weird fk?
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedInteger('best_answer_id')->nullable();
+            $table->unsignedBigInteger('user_id');//unsignedBigInteger fixed issue of constraints
             $table->timestamps();
             //FK
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
