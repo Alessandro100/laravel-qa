@@ -25,6 +25,13 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        #Laravel handles $user behind the scene
+        \Gate::define('update-question', function($user, $question){
+            return $user->id === $question->user_id;
+        });
+
+        \Gate::define('delete-question', function($user, $question){
+            return $user->id === $question->user_id;
+        });
     }
 }
