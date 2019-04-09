@@ -8,6 +8,10 @@ use App\Http\Requests\AskQuestionRequest;
 
 class QuestionsController extends Controller
 {
+    public function __construct(){
+        //this forces authentication of users for all actions, except mentions
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -62,9 +66,12 @@ class QuestionsController extends Controller
      */
     public function edit(Question $question)
     {
+        /*
+        GATE VALIDATION
         if(\Gate::denies('update-question', $question)){
             abort(403, "Access Denied");
-        }
+        }*/
+        $this->authorize("update", $question);
         return view("questions.edit", compact('question')); #compact = format data for nice return 
     }
 
