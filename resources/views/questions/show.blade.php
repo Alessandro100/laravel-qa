@@ -19,16 +19,16 @@
                 <div class = "d-flex flex-column vote-controles">
                     <a title = "This question is useful" class = "vote-up">
                         <!--fontawesome not working-->
-                        Vote Up
+                        <i class = "fas fa-caret-up fa-3x"></i>
                     </a>
                     <span class = "votes-count">123</span>
                     <a title = "This question is not useful" class = "vote-down off">
                         <!--fontawesome-->
-                        Vote Down
+                        <i class = "fas fa-caret-down fa-3x"></i>
                     </a>
-                    <a title = "Click to mark as favorite question (click again to undo)" class = "favorite">
+                    <a title = "Click to mark as favorite question (click again to undo)" class = "favorite mt-2">
                         <!--fontawesome-->
-                        Favorite
+                        <i class = "fas fa-star-up fa-2x"></i>
                         <span class = "favorite-count">4</span>
                     </a>
                 </div>
@@ -61,6 +61,21 @@
                     <hr>
                     @foreach($question->answers as $answer)
                         <div class = "media">
+                            <div class = "d-flex flex-column vote-controles">
+                                <a title = "This answer is useful" class = "vote-up">
+                                    <!--fontawesome not working-->
+                                    <i class = "fas fa-caret-up fa-3x"></i>
+                                </a>
+                                <span class = "votes-count">123</span>
+                                <a title = "This answer is not useful" class = "vote-down off">
+                                    <!--fontawesome-->
+                                    <i class = "fas fa-caret-down fa-3x"></i>
+                                </a>
+                                <a title = "Mark this answer as best answer" class = "vote-accepted mt-2">
+                                    <!--fontawesome-->
+                                    <i class = "fas fa-check fa-2x"></i>
+                                </a>
+                            </div>
                             <div class = "media-body">
                                 {!! $answer->body_html !!}
                                 <div class = "float-right">
