@@ -26,7 +26,8 @@ class RouteServiceProvider extends ServiceProvider
     {
         #essentially, when we call a route that requires 'slug' or custom property, we can make some pre handling here 
         Route::bind('slug', function($slug){
-            return Question::where('slug', $slug)->first() ?? abort(404);#?? = if found return else next thing
+            #this loads the page with questions and the question association (answers, user)
+            return Question::with('answers.user')->where('slug', $slug)->first() ?? abort(404);#?? = if found return else next thing
         });
 
         parent::boot();
