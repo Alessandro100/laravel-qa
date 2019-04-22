@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
+
+    protected $fillable = ['body', 'user_id'];
     //this confirms the one-to-many association
     public function question(){
         return $this->belongsTo(Question::class);
