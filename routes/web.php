@@ -19,4 +19,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('questions', 'QuestionsController')->except('show');
+//Route::post('/questions/{question}/answers', 'AnswersController@store')->name('answers.store');
+Route::resource('question.answers', 'AnswersController');
 Route::get('/questions/{slug}', 'QuestionsController@show')->name('questions.show'); #overiding the show route in resources
