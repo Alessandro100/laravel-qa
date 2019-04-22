@@ -12,23 +12,21 @@
                     </div>
                 </div>
             </div>
-
             <hr>
-
             <div class="media">
                 <div class = "d-flex flex-column vote-controles">
                     <a title = "This question is useful" class = "vote-up">
                         <!--fontawesome not working-->
-                        Vote Up
+                        <i class = "fas fa-caret-up fa-3x"></i>
                     </a>
                     <span class = "votes-count">123</span>
                     <a title = "This question is not useful" class = "vote-down off">
                         <!--fontawesome-->
-                        Vote Down
+                        <i class = "fas fa-caret-down fa-3x"></i>
                     </a>
-                    <a title = "Click to mark as favorite question (click again to undo)" class = "favorite">
+                    <a title = "Click to mark as favorite question (click again to undo)" class = "favorite mt-2">
                         <!--fontawesome-->
-                        Favorite
+                        <i class = "fas fa-star-up fa-2x"></i>
                         <span class = "favorite-count">4</span>
                     </a>
                 </div>
@@ -48,40 +46,11 @@
                 </div>
             </div>
         </div>
-        
     </div>
-
-    <div class = "row mt-4">
-        <div class = "col-md-12">
-            <div class = "card">
-                <div class = "card-body">
-                    <div class = "card-title">
-                        <h2>{{$question->answers_count . " " . str_plural('Answer', $question->answer_count)}}</h2>
-                    </div>
-                    <hr>
-                    @foreach($question->answers as $answer)
-                        <div class = "media">
-                            <div class = "media-body">
-                                {!! $answer->body_html !!}
-                                <div class = "float-right">
-                                    <span class = "text-muted">Answered {{$answer->created_date}}</span>
-                                    <div class = "media mt-2">
-                                        <a href = "{{$answer->user->url}}" class = "pr-2">
-                                            <img src = "{{$answer->user->avatar}}" style = "width: 32px;border-radius: 5px;">
-                                        </a>
-                                        <div class = "media-body mt-1">
-                                            <a href = "{{$answer->user->url}}">{{$answer->user->name}}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-
+    @include('answers._index', [
+        'answers' => $question->answers,
+        'answersCount' => $question->answers_count
+    ])
+    @include('answers._create')
 </div>
 @endsection 

@@ -62,6 +62,30 @@
   }
 
   span{
-    
+    &.votes-count{
+      font-size:25px;
+    }
+    &.favorites-count{
+      font-size: 12px;
+    }
+    a{
+      cursor: pointer;
+      color: $grey-600;
+      
+      &.off, &.off:hover{
+        color: $grey-500;
+      }
+
+      &.favorite{
+        &.favorited, &.favorited:hover{
+          color: $warning;
+        }
+      }
+
+      &.vote-accepted{
+        color: $green;
+      }
+    }
+
   }
 }
